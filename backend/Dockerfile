@@ -13,6 +13,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libavcodec-dev \
     libavformat-dev \
     libavutil-dev \
+    libavdevice-dev \
+    libavfilter-dev \
     libswscale-dev \
     libswresample-dev \
     gcc \
