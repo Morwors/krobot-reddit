@@ -9,6 +9,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     fonts-liberation \
     fonts-dejavu-core \
+    pkg-config \
+    libavcodec-dev \
+    libavformat-dev \
+    libavutil-dev \
+    libswscale-dev \
+    libswresample-dev \
+    gcc \
+    g++ \
     && rm -rf /var/lib/apt/lists/*
 
 COPY backend/requirements.txt .
