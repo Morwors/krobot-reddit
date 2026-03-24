@@ -2,7 +2,6 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install runtime deps + build deps for PyAV (av==11.* required by faster-whisper)
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
     libsndfile1 \
@@ -10,21 +9,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
     fonts-liberation \
     fonts-dejavu-core \
-    pkg-config \
-    gcc \
-    libavcodec-dev \
-    libavformat-dev \
-    libavutil-dev \
-    libavdevice-dev \
-    libavfilter-dev \
-    libswscale-dev \
-    libswresample-dev \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
-# Pin av==11.4.2 explicitly to avoid TTS pulling a different version
-RUN pip install --no-cache-dir av==11.4.2 && \
-    pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
